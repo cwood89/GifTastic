@@ -17,20 +17,22 @@ function addButtons() {
         $("#buttons").append(b);
     }
 };
-// initial button push
-addButtons();
-console.log(topics);
 
 // adds button to topic array
-$("#addGif").on("click", function(event) {
+$("#add-gif").on("click", function(event) {
     event.preventDefault();
     var gifAdd = $("#gif-input").val().trim();
     topics.push(gifAdd);
     addButtons();
 });
 
+// initial button push
+addButtons();
+console.log(topics);
+
+
 // run gif search on button click
-$("button").on("click", function() {
+$("#buttons").on("click", "button", function() {
     // empty gif display div
     $("#gif-display").empty();
     // obtain value from button
@@ -50,6 +52,7 @@ $("button").on("click", function() {
         for (var i = 0; i < results.length; i++) {
             // create gif holder div
             var gifDiv = $("<div>");
+            gifDiv.attr("class", "gif-list");
             // create image element
             var image = $("<img>")
             // add api data to image element
@@ -87,4 +90,3 @@ function playPause() {
         $(this).attr("data-state", "still");
       }
 };
-
