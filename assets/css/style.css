@@ -10,6 +10,10 @@ body {
     background-color: whitesmoke ;
 }
 
+#buttons {
+    float: left;
+}
+
 #add-topic {
     padding: 10px;
     float: right;
@@ -18,6 +22,7 @@ body {
 }
 
 #gif-display {
+    clear: both;
     padding: 10px;
 }
 
