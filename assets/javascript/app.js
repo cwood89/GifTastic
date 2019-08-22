@@ -19,7 +19,7 @@ function addButtons() {
 };
 
 // adds button to topic array
-$("#add-gif").on("click", function(event) {
+$("#add-gif").on("click", function (event) {
     event.preventDefault();
     var gifAdd = $("#gif-input").val().trim();
     topics.push(gifAdd);
@@ -32,20 +32,20 @@ console.log(topics);
 
 
 // run gif search on button click
-$("#buttons").on("click", "button", function() {
+$("#buttons").on("click", "button", function () { // used event delegation register click on newly added buttons
     // empty gif display div
     $("#gif-display").empty();
     // obtain value from button
-    var searchName =  $(this).attr("data-name");
+    var searchName = $(this).attr("data-name");
     // create url for api
     var key = "0XrbbyngP4RtQh2ck5pNTozg6RlDTD31";
-    var queryURL = "https://api.giphy.com/v1/gifs/search?q=" + searchName 
-    + "&api_key=" + key + "&limit=10";
+    var queryURL = "https://api.giphy.com/v1/gifs/search?q=" + searchName
+        + "&api_key=" + key + "&limit=10";
     // api call
     $.ajax({
         url: queryURL,
         method: "GET"
-    }).then(function(response) {
+    }).then(function (response) {
         var results = response.data;
         console.log(results);
         // loop through all results
@@ -57,7 +57,7 @@ $("#buttons").on("click", "button", function() {
             var image = $("<img>")
             // add api data to image element
             image.attr("data-animate", results[i].images.fixed_height.url);
-            image.attr("data-still",  results[i].images.fixed_height_still.url);
+            image.attr("data-still", results[i].images.fixed_height_still.url);
             image.attr("src", image.attr("data-still"));
             image.attr("data-state", "still");
             // on click run playPause function
@@ -71,7 +71,7 @@ $("#buttons").on("click", "button", function() {
             gifDiv.append(rating);
             // append div to DOM
             $("#gif-display").append(gifDiv);
-            
+
         };
     });
 });
@@ -84,9 +84,9 @@ function playPause() {
     if (state === "still") {
         $(this).attr("src", $(this).attr("data-animate"));
         $(this).attr("data-state", "animate");
-    // if gif is amimated then pause
+        // if gif is amimated then pause
     } else {
         $(this).attr("src", $(this).attr("data-still"));
         $(this).attr("data-state", "still");
-      }
+    }
 };
