@@ -2,66 +2,64 @@ var topics = ["basketball", "kobe", "lebron", "skateboarding", "kickflip", "butt
 
 function addButtons() {
     // empty button div
-    $("#buttons").empty();
+    $(".buttons").empty();
     // loops through topics array
     for (var i = 0; i < topics.length; i++) {
         // create button element
         var b = $("<button>");
         // adds a class to buttons for styling
-        b.addClass("topic");
+        b.addClass("button__subject");
         // adds value to buttons for api call
         b.attr("data-name", topics[i]);
         // Providing the initial button text
         b.text(topics[i]);
         // Adding the button to the buttons div
-        $("#buttons").append(b);
+        $(".buttons").append(b);
     }
 };
 
 // adds button to topic array
-$("#add-gif").on("click", function (event) {
+$("#search__button").on("click", function (event) {
     event.preventDefault();
-    var gifAdd = $("#gif-input").val().trim();
-    topics.push(gifAdd);
+    var searchVal = $(".search__input").val().trim();
+    topics.push(searchVal);
+    searchGifs(searchVal);
     addButtons();
 });
 
-// initial button push
+// initial button push and search
 addButtons();
-console.log(topics);
+searchGifs(topics[0])
+function searchGifs(search) {
 
-
-// run gif search on button click
-$("#buttons").on("click", "button", function () { // used event delegation register click on newly added buttons
     // empty gif display div
-    $("#gif-display").empty();
-    // obtain value from button
-    var searchName = $(this).attr("data-name");
-    // create url for api
+    $(".gifs").empty();
+    // create url for api -- need to hide api key
     var key = "0XrbbyngP4RtQh2ck5pNTozg6RlDTD31";
-    var queryURL = "https://api.giphy.com/v1/gifs/search?q=" + searchName
-        + "&api_key=" + key + "&limit=10";
+    var queryURL = "https://api.giphy.com/v1/gifs/search?q=" + search
+        + "&api_key=" + key + "&limit=15";
     // api call
     $.ajax({
         url: queryURL,
         method: "GET"
     }).then(function (response) {
         var results = response.data;
-        console.log(results);
         // loop through all results
         for (var i = 0; i < results.length; i++) {
             // create gif holder div
             var gifDiv = $("<div>");
-            gifDiv.attr("class", "gif-list");
+            gifDiv.attr("class", "gifs__item");
             // create image element
             var image = $("<img>")
             // add api data to image element
             image.attr("data-animate", results[i].images.fixed_height.url);
+
             image.attr("data-still", results[i].images.fixed_height_still.url);
+
             image.attr("src", image.attr("data-still"));
             image.attr("data-state", "still");
-            // on click run playPause function
-            image.on("click", playPause)
+            // on hover run playPause function
+            image.hover(playPause, playPause)
             // rating display
             var rating = $("<p>");
             // get rating from api call
@@ -70,16 +68,21 @@ $("#buttons").on("click", "button", function () { // used event delegation regis
             gifDiv.append(image);
             gifDiv.append(rating);
             // append div to DOM
-            $("#gif-display").append(gifDiv);
+            $(".gifs").append(gifDiv);
 
         };
     });
+}
+
+// run gif search on button click
+$(".buttons").on("click", "button", function () { // used event delegation register click on newly added buttons
+    var searchName = $(this).attr("data-name");
+    searchGifs(searchName);
 });
 
 // play pause function
 function playPause() {
     var state = $(this).attr("data-state");
-    console.log(state);
     // if gif is sill then amimate
     if (state === "still") {
         $(this).attr("src", $(this).attr("data-animate"));

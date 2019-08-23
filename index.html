@@ -1,26 +1,29 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
-	<meta charset="UTF-8">
-	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>gifTastic</title>
     <link rel="stylesheet" type="text/css" href="assets/css/style.css">
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
 </head>
 
 <body>
-    <div id = "buttons">
+
+    <div class="header">
+        <h1 class="header__title">GifTastic</h1>
+        <div class="buttons">
+        </div>
+        <form class="search">
+            <input type="text" class="search__input" placeholder="Find a Gif!">
+            <button id="search__button">Search</button>
+        </form>
     </div>
 
-    <form id="add-topic">
-        <label for="gif-input"><strong>Add a topic!</strong></label>
-        <br>
-		<input type="text" id="gif-input"><br>
-		<input id="add-gif" type="submit" value="Submit">
-    </form>
 
-    <div id = "gif-display">
+    <div class="gifs">
     </div>
 
-    <script src = "assets/javascript/app.js"></script>
+    <script src="assets/javascript/app.js"></script>
 </body>
