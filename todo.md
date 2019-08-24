@@ -1,9 +1,9 @@
 # TO DO
 
-clean up search
-fix button  css
+style err message and ratings
 add transition animation images when added
-add drop shadow to images
+add media queries
+fix button overflow
 
 ## Bem
 

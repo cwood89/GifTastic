@@ -73,8 +73,9 @@ function searchGifs(search) {
             image.hover(playPause, playPause)
             // rating display
             var rating = $("<p>");
+            rating.attr("class", "gifs__rating");
             // get rating from api call
-            rating.text("Rating: " + results[i].rating);
+            rating.text(results[i].rating);
             // add data to div
             gifDiv.append(image);
             gifDiv.append(rating);
