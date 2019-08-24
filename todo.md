@@ -1,7 +1,9 @@
 # TO DO
 
-
+clean up search
+fix button  css
 add transition animation images when added
+add drop shadow to images
 
 ## Bem
 

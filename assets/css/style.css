@@ -44,19 +44,27 @@ img {
     transition: all 300ms;
   }
 
-.search{
-  margin-top: 40px;
-  margin-bottom: 20px;
-  margin: 40px auto 20px auto;
-  display: block;
-  color: white;
+.search {
+  width: 90vw;
+  margin:auto;
 }
-
-#search__button {
-  background-color: transparent;
-  color: white;
-  border-radius: 5px;
-  border: 2px;
+.search__input, #search__button {
+  text-transform: uppercase;
+  text-shadow: 0 1px 1px rgba(0,0,0,.2);
+  border: 1px solid rgba(255,255,255,.6);
+  font-family: sans-serif;
+  font-weight: normal;
+  padding: 10px;
+  font-size: 15px;
+  display: block;
+  text-align: center;
+  border-radius: 4px;
+  color: rgba(255,255,255,.6);
+  text-decoration: none;
+  margin-left: 10px;
+  margin-top: 10px;
+  background: rgba(255,255,255,0);
+  letter-spacing: 1px;
 }
 
 .buttons {
@@ -102,12 +110,10 @@ img {
   
 .header {
     width: 100vw;
-    display: block;
     margin: auto;
     height: 60vh;
     background-image: linear-gradient(to bottom,rgb(106, 77, 138, 0.7),
     rgb(106, 77, 138, 0.5),rgb(106, 77, 138, 0));
-    
   }
 
 .header__title{
