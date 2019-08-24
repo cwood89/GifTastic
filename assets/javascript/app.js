@@ -21,10 +21,16 @@ function addButtons() {
 // adds button to topic array
 $("#search__button").on("click", function (event) {
     event.preventDefault();
-    var searchVal = $(".search__input").val().trim();
+    var search = $(".search__input")
+    var searchVal = search.val().trim();
+    //if no value then alert 
+    if (!searchVal) {
+        return
+    }
     topics.push(searchVal);
     searchGifs(searchVal);
     addButtons();
+    search.val("")
 });
 
 // initial button push and search
@@ -44,6 +50,11 @@ function searchGifs(search) {
         method: "GET"
     }).then(function (response) {
         var results = response.data;
+        if (results.length == 0) {
+            var message = $("<h2>Nothing Found</h2>")
+            message.attr("class", "message");
+            $(".gifs").append(message)
+        }
         // loop through all results
         for (var i = 0; i < results.length; i++) {
             // create gif holder div

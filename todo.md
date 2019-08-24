@@ -1,10 +1,7 @@
 # TO DO
 
-Add hover effect to images
-  instead of clicking to play gifs on hover should enlarge and play
-add transition animation images
-add Header
-add general styling
+
+add transition animation images when added
 
 ## Bem
 
