@@ -92,7 +92,7 @@ function searchGifs(search) {
 
             i++;
             if (i < results.length) {
-                setTimeout(repeat, 60)
+                setTimeout(repeat, 500)
             }
         };
         repeat();

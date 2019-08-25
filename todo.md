@@ -1,6 +1,5 @@
 # TO DO
 
-add transition animation images when added
 add media queries
 
 ## Bem

@@ -51,11 +51,14 @@ img:hover {
   -webkit-transition: all 400ms;
   padding-bottom: 40px;
   animation: slide-up 0.4s ease;
-  -webkit-animation: slide-up 1.7s ease;
+  -webkit-animation: slide-up 1.5s ease;
 }
 
 @keyframes slide-up {
   0% {
+      opacity: 0;
+    }
+  40% {
       opacity: 0;
       transform: translateY(20px);
   }
@@ -209,4 +212,43 @@ img:hover {
     left: 10px; 
     top: 5px;
     color:rgba(110, 250, 91, 0.5)
+  }
+/* Smartphones (portrait) ----------- */
+@media only screen and (max-width : 320px) {
+  .header__title {
+    font: 75px Helvetica, Sans-serif;
+    padding:10px;
+  }
+  .header__title::after {
+    padding:10px;
+    top: 3px;
+    left:6px;
+  }
+  .button__subject {
+    padding: 7px;
+    font-size: 10px;
+    margin-left: 7px;
+    margin-top: 7px;
+  }
+  .buttons {
+    margin:10px auto 0;
+  }
+  img{
+    width: 90vw;
+  }
+  img:hover {
+    width: 95vw;
+  }
+  .search__input {
+    width: 72vw;
+    padding: 7px;
+    font-size: 10px;
+    margin-left: 7px;
+    margin-top: 7px;
+  }
+  #search__button {
+    padding: 7px;
+    font-size: 10px;
+    margin-top: 7px;
+  }
   }
