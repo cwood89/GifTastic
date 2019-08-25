@@ -1,9 +1,7 @@
 # TO DO
 
-style err message and ratings
 add transition animation images when added
 add media queries
-fix button overflow
 
 ## Bem
 

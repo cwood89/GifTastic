@@ -36,6 +36,7 @@ $("#search__button").on("click", function (event) {
 // initial button push and search
 addButtons();
 searchGifs(topics[0])
+
 function searchGifs(search) {
 
     // empty gif display div
@@ -52,14 +53,23 @@ function searchGifs(search) {
         var results = response.data;
         if (results.length == 0) {
             var message = $("<h2>Nothing Found</h2>")
-            message.attr("class", "message");
+            message.attr("class", "gifs__message");
             $(".gifs").append(message)
         }
+
         // loop through all results
-        for (var i = 0; i < results.length; i++) {
+        var i = 0
+        function repeat() {
+
+            // }
+            // for (var i = 0; i < results.length; i++) {
+
             // create gif holder div
             var gifDiv = $("<div>");
             gifDiv.attr("class", "gifs__item");
+
+            // append div to DOM
+            $(".gifs").append(gifDiv);
             // create image element
             var image = $("<img>")
             // add api data to image element
@@ -77,12 +87,15 @@ function searchGifs(search) {
             // get rating from api call
             rating.text(results[i].rating);
             // add data to div
-            gifDiv.append(image);
+            gifDiv.append(image)
             gifDiv.append(rating);
-            // append div to DOM
-            $(".gifs").append(gifDiv);
 
+            i++;
+            if (i < results.length) {
+                setTimeout(repeat, 60)
+            }
         };
+        repeat();
     });
 }
 
