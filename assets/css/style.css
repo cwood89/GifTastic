@@ -192,8 +192,8 @@ img:hover {
 .header {
     width: 100vw;
     margin: auto;
-    background-image: linear-gradient(to bottom,rgb(106, 77, 138, 0.7),
-    rgb(106, 77, 138, 0.5),rgb(106, 77, 138, 0));
+    background-image: linear-gradient(to bottom,rgb(106, 77, 138, 0.3),
+    rgb(106, 77, 138, 0.2),rgb(106, 77, 138, 0));
   }
 
 .header__title{
